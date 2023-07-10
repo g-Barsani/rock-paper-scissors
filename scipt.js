@@ -18,12 +18,41 @@ else
     return 2;
 }
 
-let computerSelection = getComputerChoice();
-let playerSelection = 'rock';
-console.log(`The game result is: ${playRound(playerSelection, computerSelection)}`);
+//console.log(`The game result is: ${playRound(playerSelection, computerSelection)}`);
+game();
 
-
-
+function game() {
+    const TOTAL_ROUNDS = 5;
+    for (let i = 0; i < TOTAL_ROUNDS; i++) {
+        let computerSelection = getComputerChoice();
+        let playerSelection = prompt().toLowerCase();
+        while (true) {
+            if (playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors") {
+                break;
+            } else {
+                console.log('Please, enter a valid option!');
+                playerSelection = prompt().toLowerCase();
+            }
+        }
+        
+        
+        let gameResult = playRound(playerSelection, computerSelection);
+  
+        switch (gameResult) {
+          case 1: 
+            console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+            break;
+          case 2:
+            console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+            break;
+          default: 
+            console.log(`It's a tie! ${playerSelection} and ${computerSelection}`);
+        }
+        //computerSelection = getComputerChoice();
+        //playerSelection = 'rock';
+    }
+  }
+  
 
 /*
 // Randonly returns either 'Rock', 'Paper' or 'Scissors'

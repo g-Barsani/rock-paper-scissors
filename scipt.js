@@ -59,12 +59,12 @@ function game() {
         if (button.tagName === "BUTTON") {
             const buttonId = e.target.id;
             playerSelection = buttonId;
-            let computerSelection = getComputerChoice();
-            // let computerSelection = "paper";
+            // let computerSelection = getComputerChoice();
+            let computerSelection = "paper";
 
             let gameResult = playRound(playerSelection, computerSelection);
             const results = document.getElementById('results'); 
-            
+
             switch (gameResult) {
                 case 1: 
                 results.textContent = `You win! ${playerSelection} beats ${computerSelection}`;

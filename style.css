@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* background-image: url('/images/prep.png'); */
+    /* background-image: url('test.jpg')'); */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* justify-content: space-between; */
+    /* gap: 100px; */
+}
+
+/* .upper-half, .bottom-half {
+    flex: 1;
+} */
+
+#upper-section {
+    /* border: 2px solid pink; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    /* top | right | bottom | left */
+
+    margin-top: 40px;
+    max-width: 100%;
+    height: 200px;
+    /* height: 400px;  */
+}
+
+#middle-section {
+    /* border: 2px solid orange; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* align-items: flex-end; */
+    /* top | right | bottom | left */
+
+    margin-top: 50px;
+    max-width: 100%;
+    height: 350px;
+    /* height: 400px;  */
+}
+
+#bottom-section {
+    align-self: flex-end;
+    display: flex;
+    align-items: flex-end;
+    /* border: 2px solid blue; */
+    max-width: 100%;
+    /* height: 300px; */
+
+    position: fixed;
+    bottom: 0;
+}
+
+#copyright {
+    /* border: 2px solid green; */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#players {
+    /* border: 2px solid greenyellow; */
+}
+#scores {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    /* gap: 100px; */
+}
+#score-L, #score-R {
+    /* margin-left: 0px; */
+    height: 80px;
+    text-align: center;
+}
+
+.button-bar {
+    /* padding: 0px 100px 0px 100px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+
+    /* border: 2px solid gold; */
+    /* margin: 10px 0 10px 0; */
+}
+
+button {
+    font-size: xx-large;
+    width: 180px;
+    height: 70px;
+}
+
+#result-box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#results {
+    /* border: 2px solid pink; */
+    /* align-self: flex-end; */
+    align-self: center;
+    text-decoration: underline;
+}
+
+#art {
+    max-width: 100%;
+    max-height: 100%;
+    /* border: 2px solid red; */
+
+    overflow: hidden;
+}
+
+#players {
+    display:flex;
+}
+img#wolf, img#red {
+    width:50%; /* you can use % */
+    height: auto;
+}
+
+img#prep {
+    object-fit: fill;
+    /* visibility: hidden; */
+    max-width: 100%;
+    max-height: 100%;
+
+    transform: scale(3.1) translateY(8px);
+}

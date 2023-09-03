@@ -112,6 +112,7 @@ button {
     /* align-self: flex-end; */
     align-self: center;
     text-decoration: underline;
+    font-weight: bold;
 }
 
 #art {
@@ -138,3 +139,19 @@ img#prep {
 
     transform: scale(3.1) translateY(8px);
 }
+
+/* @media (max-width: 375px)  {
+    button {
+        font-size: xx-large;
+        width: 180px;
+        height: 40px;
+    }
+
+    #art {
+        z-index: 0;
+    }
+
+    #result-box{
+        z-index: 1;
+    }
+} */

@@ -147,6 +147,7 @@ img#prep {
     transform: scale(3.1) translateY(8px);
 }
 
+/* Really small mobile devices */
 @media (max-width: 375px)  {
     button {
         font-size: xx-large;
@@ -172,4 +173,89 @@ img#prep {
         height: 22px;
         font-size: medium;
     }
+}
+
+/* Desktop devices */
+@media (min-width: 1024px) {
+    button {
+        /* background-color: pink; */
+    }
+
+    #upper-section {
+        /* height: 100px; */
+    }
+
+    #bottom-section {
+        max-width: 1000px;
+        max-height: 1000px;
+
+        z-index: 0;
+    }
+
+    #copyright {
+        margin-top: 40px;
+    }
+    
+    #players {
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    img#wolf, img#red {
+        width: 220px; /* you can use % */
+        height: auto;
+
+        z-index: 1;
+    }
+
+    #scores {
+        z-index: 3;
+    }
+
+    .button-bar {
+        z-index: 2;
+        position: fixed;
+        top: 10%;
+        left: 0;
+        right: 0;
+    }
+
+    #results {
+        z-index: 3;
+        font-size: xx-large;
+        background-color: rgba(123, 123, 123, 0.75);
+        color: white;
+        /* height: 50px; */
+        padding: 10px;
+
+        position: fixed;
+        top: 85%;
+        /* left: 0; */
+        /* right: 0; */
+    }
+
+    #art {
+        /* max-width: 80%; */
+        /* max-height: 80%; */
+        /* border: 2px solid red; */
+    
+        overflow: hidden;
+        /* align-self: center; */
+
+
+        position: fixed;
+        /* bottom: 0; */
+        /* left: 0; */
+        /* right: 0; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    #prep {
+        /* align-self: center; */
+        width: 70%;
+        height: auto;
+    }
+
 }

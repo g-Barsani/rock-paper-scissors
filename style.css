@@ -63,6 +63,9 @@ body {
     display: flex;
     justify-content: center;
     width: 100%;
+
+    margin-top: 15px;
+    /* z-index: 2; */
 }
 
 #players {
@@ -101,7 +104,7 @@ button {
 #result-box {
     height: 100%;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
 
@@ -113,6 +116,9 @@ button {
     align-self: center;
     text-decoration: underline;
     font-weight: bold;
+    font-size: large;
+
+    z-index: 1;
 }
 
 #art {
@@ -120,6 +126,7 @@ button {
     max-height: 100%;
     /* border: 2px solid red; */
 
+    z-index: 0;
     overflow: hidden;
 }
 
@@ -140,7 +147,7 @@ img#prep {
     transform: scale(3.1) translateY(8px);
 }
 
-/* @media (max-width: 375px)  {
+@media (max-width: 375px)  {
     button {
         font-size: xx-large;
         width: 180px;
@@ -151,7 +158,18 @@ img#prep {
         z-index: 0;
     }
 
-    #result-box{
+    #result-box {
         z-index: 1;
+        /* justify-self: end; */
+        align-items: flex-end;
+        margin-bottom: 120px;
+
     }
-} */
+
+    #results {
+        background-color: rgb(123, 123, 123);
+        color: white;
+        height: 22px;
+        font-size: medium;
+    }
+}

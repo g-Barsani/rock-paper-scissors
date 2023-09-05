@@ -108,6 +108,7 @@ button {
 
 button:hover{
  /* box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3); */
+ cursor: pointer;
 }
 button.lined.thick{
  border:solid 3px #41403E;

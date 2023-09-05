@@ -18,24 +18,6 @@ else
     return 2;
 }
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-const buttons = document.querySelectorAll("button");
-function buttonDelay(buttons) {
-    const interval = 10000;
-    buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-            button.setAttribute("disabled", "true");
-
-            sleep(interval);
-
-            button.removeAttribute("disabled");
-        })
-    })
-}
-
 function swapImages(playerSelection, computerSelection) {
     const interval = 500;
     const prepImage = document.getElementById("prep");
@@ -78,8 +60,6 @@ function swapImages(playerSelection, computerSelection) {
     }, interval);
 }
 
-// buttonDelay(buttons);
-game();
 
 function game() {
     
@@ -88,10 +68,10 @@ function game() {
 
     let playerSelection = null;
     const buttonBar = document.querySelector('.button-bar');
-
+    
     buttonBar.addEventListener('click', e => {
         const button = e.target;
-
+        
         if (button.tagName === "BUTTON") {
             const buttonId = e.target.id;
             playerSelection = buttonId;
@@ -127,3 +107,5 @@ function game() {
         }
     })
   }
+
+game();

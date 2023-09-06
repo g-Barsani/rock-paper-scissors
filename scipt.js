@@ -44,13 +44,13 @@ function swapImages(playerSelection, computerSelection) {
             case playerSelection === "rock" && computerSelection === "scissors":
                 prepImage.src = "images/all-loses-wolf/lose - scissors rock.png";
                 break;
-            case playerSelection === "rock" && computerSelection === "paper":
+                case playerSelection === "rock" && computerSelection === "paper":
                 prepImage.src = "images/all-loses-red/lose - paper rock.png";
                 break;
             case playerSelection === "scissors" && computerSelection === "rock":
                 prepImage.src = "images/all-loses-red/lose - rock scissors.png";
                 break;
-            case playerSelection === "paper" && computerSelection === "scissors":
+                case playerSelection === "paper" && computerSelection === "scissors":
                 prepImage.src = "images/all-loses-red/lose - scissors paper.png";
                 break;
             default:
@@ -60,6 +60,34 @@ function swapImages(playerSelection, computerSelection) {
     }, interval);
 }
 
+function animateScore(whoScored) {
+    let plusOne = whoScored === "computer" ? 'plus-one-L' : 'plus-one-R';  
+
+    const span = document.createElement('span');
+
+    // Set the class and style attributes
+    span.className = plusOne;
+    span.style.display = 'none';
+
+    // Set the inner Text content to '+1'
+    span.innerText = '+1';
+
+    // Get the element with the class 'add-comment'
+    const addComment = document.querySelector('.add-comment');
+
+    // Append the 'span' element to the 'add-comment' element
+    addComment.appendChild(span);
+
+    // Fade in the 'span' element
+    setTimeout(function() {
+        span.style.display = 'block';
+    }, 0);
+
+    // Schedule removal of the 'span' element after 1000 milliseconds (1 second)
+    setTimeout(function() {
+        addComment.removeChild(span);
+    }, 2000);
+}
 
 function game() {
     
@@ -76,36 +104,38 @@ function game() {
             const buttonId = e.target.id;
             playerSelection = buttonId;
             let computerSelection = getComputerChoice();
-            // let computerSelection = "rock";
+            // let computerSelection = "rock";  // DEBUG
             
             let gameResult = playRound(playerSelection, computerSelection);
             const results = document.getElementById('results'); 
             
             swapImages(playerSelection, computerSelection);
             
-
             switch (gameResult) {
                 case 1: 
                 results.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
                 playerScore++;
+                animateScore("player");
                 break;
                 case 2:
                 results.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
                 computerScore++;
+                animateScore("computer");
                 break;
                 default: 
                 results.textContent = `It's a tie! ${playerSelection} and ${computerSelection}`;
             }
-
+            
             // Changing score in the DOM
             let scoreValueL = document.getElementById('score-value-L');
             scoreValueL.textContent = computerScore;
-
+            
             let scoreValueR = document.getElementById('score-value-R');
             scoreValueR.textContent = playerScore;
-
+            
         }
     })
-  }
+}
 
 game();
+

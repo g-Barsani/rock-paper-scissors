@@ -1,3 +1,5 @@
+
+
 function getComputerChoice() {
     setOfOptions = ['rock', 'paper', 'scissors'];
     randIndex = Math.floor(Math.random() * 3);
@@ -68,6 +70,8 @@ function swapImages(playerSelection, computerSelection) {
 }
 
 function animateScore(whoScored) {
+    const interval = 2000;
+
     let plusOne = whoScored === "computer" ? 'plus-one-L' : 'plus-one-R';  
 
     const span = document.createElement('span');
@@ -90,10 +94,10 @@ function animateScore(whoScored) {
         span.style.display = 'block';
     }, 0);
 
-    // Schedule removal of the 'span' element after 1000 milliseconds (1 second)
+    // Schedule removal of the 'span' element after 2000 milliseconds (2 seconds)
     setTimeout(function() {
         addComment.removeChild(span);
-    }, 2000);
+    }, interval);
 }
 
 function updateScore() {
@@ -165,8 +169,8 @@ function game() {
         if (button.tagName === "BUTTON") {
             const buttonId = e.target.id;
             playerSelection = buttonId;
-            // let computerSelection = getComputerChoice();
-            let computerSelection = "rock";  // DEBUG
+            let computerSelection = getComputerChoice();
+            //let computerSelection = "rock";  // DEBUG
             
             let gameResult = playRound(playerSelection, computerSelection);
             const results = document.getElementById('results'); 
@@ -204,4 +208,3 @@ let gameState = "playing";
 let playerScore = 0;
 let computerScore = 0;
 game();
-

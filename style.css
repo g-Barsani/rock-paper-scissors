@@ -11,12 +11,13 @@ body {
     font-family: 'Grandstander', cursive;
 }
 
+/* Header Styles */
 #upper-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-
+    
     margin-top: 40px;
     max-width: 100%;
     height: 200px;
@@ -24,12 +25,20 @@ body {
 
 #middle-section {
     display: flex;
-    justify-content: center;
     flex-direction: column;
-
+    justify-content: center;
+    
     margin-top: 50px;
     max-width: 100%;
     height: 350px;
+}
+
+#copyright {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    margin-top: 15px;
 }
 
 #bottom-section {
@@ -42,13 +51,6 @@ body {
     bottom: 0;
 }
 
-#copyright {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-
-    margin-top: 15px;
-}
 
 #score-animation {
     width: 100%;
@@ -71,6 +73,7 @@ body {
     background-color: pink;
 }
 
+/* Plus One Styles */
 .plus-one-L {
     color: #3f3f3f;
     position: absolute;
@@ -81,7 +84,7 @@ body {
     animation-iteration-count: 1;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
-  }
+}
 
   .plus-one-R {
     color: #3f3f3f;
@@ -93,20 +96,19 @@ body {
     animation-iteration-count: 1;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
-  }
+}
   
-  @keyframes fade-in-up {
-    0%,
-    10% {
-      /* left: 20%; */
-      top: 10%;
-      opacity: 1;
-    }
-    100% {
-      top: 0;  /* Animate +1 to go up  */
-      opacity: 0;
-    }
-  }
+@keyframes fade-in-up {
+0%,
+10% {
+    top: 10%;
+    opacity: 1;
+}
+100% {
+    top: 0;  /* Animate +1 to go up  */
+    opacity: 0;
+}
+}
 
 #plus-one-w {
     background-color: rgb(85, 255, 79);
@@ -157,9 +159,11 @@ button {
 button:hover{
  cursor: pointer;
 }
+
 button.lined.thick{
  border:solid 3px #41403E;
 }
+
 #result-box {
     height: 100%;
     display: flex;
@@ -188,6 +192,7 @@ button.lined.thick{
 #players {
     display:flex;
 }
+
 img#wolf, img#red {
     width:50%; /* you can use % */
     height: auto;
@@ -253,10 +258,8 @@ p, label, img, div {
     #results {
         position: absolute; /* Use absolute positioning */
         bottom: 1%; /* Adjust the top position as needed */
-
         background-color: rgba(123, 123, 123, 0.5);
         color: white;
-        /* height: 50px; */
         padding: 10px;
         font-size: medium;
     }
@@ -292,27 +295,29 @@ p, label, img, div {
     }
 
     .button-bar {
-        z-index: 2;
         position: fixed;
         top: 10%;
         left: 0;
         right: 0;
+
+        z-index: 2;
     }
 
     #results {
-        z-index: 3;
+        position: fixed;
+        top: 85%;
         font-size: xx-large;
         background-color: rgba(123, 123, 123, 0.75);
         color: white;
         padding: 10px;
-        position: fixed;
-        top: 85%;
+        
+        z-index: 3;
     }
 
     #art {
-        overflow: hidden;
-
         position: fixed;
+
+        overflow: hidden;
 
         display: flex;
         justify-content: center;

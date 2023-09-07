@@ -24,7 +24,14 @@ function swapImages(playerSelection, computerSelection) {
 
     prepImage.src = "images/prep.png";
 
+    // setTimeout is an asynchronous function in JavaScript
+    
     setTimeout(() => {
+        // That's why I must check this conditional inside this block
+        // Otherwise the compiler will just skip it
+        if (gameState === "game over") 
+            return;
+
         switch (true) {
             case playerSelection === "rock" && computerSelection === "rock":
                 prepImage.src = "images/ties/rock vs rock - tie.png";
@@ -89,10 +96,65 @@ function animateScore(whoScored) {
     }, 2000);
 }
 
-function game() {
+function updateScore() {
+    // Changing score in the DOM
+    let scoreValueL = document.getElementById('score-value-L');
+    scoreValueL.textContent = computerScore;
+
+    let scoreValueR = document.getElementById('score-value-R');
+    scoreValueR.textContent = playerScore;
+}
+
+
+function deactivateButtons() {
+    const buttons = document.querySelectorAll('.button-bar');
+    buttons.forEach(button => {
+        button.classList.add('button-disabled');
+    });
+}
+
+function activateButtons() {
+    const buttons = document.querySelectorAll('.button-bar');
+    buttons.forEach(button => {
+        button.classList.remove('button-disabled');
+    });
+}
+
+function gameOver(winner) {
+    const prepImage = document.getElementById("prep");
+    results.textContent = "Game Over. Play a rematch?";
     
-    let playerScore = 0;
-    let computerScore = 0;
+    if (winner === 'player') {
+        prepImage.src = "images/game-over/wolf game over.png";
+    } else {
+        prepImage.src = "images/game-over/red game over.png"
+    }
+    gameState = "game over";
+    deactivateButtons();
+    
+    const rematchButton = document.createElement('button');
+    rematchButton.textContent = '👍';
+    rematchButton.classList.add('rematch-button');
+    rematchButton.addEventListener('click', playAgain);
+    
+    results.append(rematchButton);
+
+}
+
+function playAgain() {
+    const prepImage = document.getElementById("prep");
+    prepImage.src = "images/prep.png";
+    results.textContent = "Ready?";
+    activateButtons();
+    computerScore = 0;
+    playerScore = 0;
+    gameState = "playing";
+    updateScore();
+}
+
+function game() {
+    if (gameState === "game over") 
+        return;
 
     let playerSelection = null;
     const buttonBar = document.querySelector('.button-bar');
@@ -103,8 +165,8 @@ function game() {
         if (button.tagName === "BUTTON") {
             const buttonId = e.target.id;
             playerSelection = buttonId;
-            let computerSelection = getComputerChoice();
-            // let computerSelection = "rock";  // DEBUG
+            // let computerSelection = getComputerChoice();
+            let computerSelection = "rock";  // DEBUG
             
             let gameResult = playRound(playerSelection, computerSelection);
             const results = document.getElementById('results'); 
@@ -126,16 +188,20 @@ function game() {
                 results.textContent = `It's a tie! ${playerSelection} and ${computerSelection}`;
             }
             
-            // Changing score in the DOM
-            let scoreValueL = document.getElementById('score-value-L');
-            scoreValueL.textContent = computerScore;
-            
-            let scoreValueR = document.getElementById('score-value-R');
-            scoreValueR.textContent = playerScore;
-            
+            updateScore();
+
+            // Check if it's Game Over
+            if (playerScore === 5 || computerScore === 5)
+            {
+                const winner = playerScore > computerScore ? 'player' : 'computer';
+                gameOver(winner);
+            }
         }
     })
 }
 
+let gameState = "playing";
+let playerScore = 0;
+let computerScore = 0;
 game();
 
